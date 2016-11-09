@@ -20,7 +20,7 @@ function setup() {
 
 function draw() {
 	background (0);
-	fill (255, 0, 0);
+	fill (0, 255, 0);
 	ellipse (ballX, ballY, ballDiameter, ballDiameter);
 	rectMode (CENTER);
 	rect (mouseX, windowHeight - paddleHeight/2, paddleWidth, paddleHeight);
