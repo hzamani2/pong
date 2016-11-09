@@ -15,8 +15,8 @@ var score = 0;
 
 function setup() {
 	createCanvas (windowWidth, windowHeight);
-	ballDiameter = windowWidth/15;
-	paddleWidth = ballDiameter * 2;
+	ballDiameter = windowWidth/20;
+	paddleWidth = ballDiameter * 3;
 	paddleHeight = paddleWidth/5;
 }
 
