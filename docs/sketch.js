@@ -7,15 +7,17 @@ var yspeed = 7;
 var ballDiameter;
 var ballRadius;
 
-var paddleWidth = 160;
-var paddleHeight = 30;
+var paddleWidth;
+var paddleHeight;
 
 var score = 0;
 
 
 function setup() {
 	createCanvas (windowWidth, windowHeight);
-	ballDiameter = windowWidth/10;
+	ballDiameter = windowWidth/15;
+	paddleWidth = ballDiameter * 2;
+	paddleHeight = paddleWidth/5;
 }
 
 function draw() {
