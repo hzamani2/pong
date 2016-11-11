@@ -62,7 +62,6 @@ function draw() {
 			}
 		}
 	}
-
 }
 
 function collisionDetection () {
@@ -82,5 +81,6 @@ function collisionDetection () {
 	}
 	if (isHit) {
 		xspeed = xspeed * -1;
+		ballX = paddleWidth + ballDiameter/2;
 	}
 }
