@@ -25,6 +25,7 @@ function setup() {
 
 function draw() {
 	background (0); //black background
+	fill (0, 0, 255);
 	line (windowWidth/2, 0, windowWidth/2, windowHeight);
 	rectMode (CENTER);
 	rect (paddleX, mouseY, paddleWidth, paddleHeight);
