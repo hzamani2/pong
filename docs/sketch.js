@@ -24,6 +24,8 @@ function setup() {
 
 function draw() {
 	background (0); //black background
+	collisionDetection();
+
 	fill (0, 0, 255);
 	strokeWeight (10);
 	line (windowWidth/2, 0, windowWidth/2, windowHeight);
@@ -40,7 +42,7 @@ function draw() {
 	if ((ballY < ballDiameter/2) || (ballY > windowHeight - ballDiameter/2)) {
 		yspeed = yspeed * -1;
 	}
-
+/*
 	if (ballY < mouseY + paddleHeight/2) {
 		if (ballY > mouseY - paddleHeight/2) {
 			if (ballX < paddleWidth + ballDiameter/2) {
@@ -50,7 +52,7 @@ function draw() {
 			}
 		}
 	}
-
+*/
 	if (ballY < enemyY + paddleHeight/2) {
 		if (ballY > enemyY - paddleHeight/2) {
 			if (ballX > windowWidth -ballDiameter/2) {
@@ -61,4 +63,24 @@ function draw() {
 		}
 	}
 
+}
+
+function collisionDetection () {
+	var distance;
+	var isHit = false;
+	topLeftX = paddleX - paddleWidth/2;
+	topLeftY = mouseY - paddleHeight/2;
+	for (var i = 0; i < paddleWidth; i++) {
+		for (var j = 0; j < paddleHeight; j++) {
+			x = topLeftX + i;
+			y = topLeftY + j;
+			distance = dist (x,y,ballX,ballY);
+			if (distance < ballDiameter/2) {
+				isHit = true;
+			}
+		}
+	}
+	if (isHit) {
+		xspeed = xspeed * -1;
+	}
 }
