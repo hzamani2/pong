@@ -1,59 +1,62 @@
-var ballX = 100;
-var ballY = 100;
-
-var xspeed = 4;
-var yspeed = 7;
-
-var ballDiameter;
-var ballRadius;
-
 var paddleWidth;
 var paddleHeight;
-
-var score = 0;
-
+var paddleX;
+var ballDiameter;
+var ballX;
+var ballY;
+var xspeed = 5;
+var yspeed = 8;
+var enemyX;
+var enemyY;
 
 function setup() {
 	createCanvas (windowWidth, windowHeight);
-	ballDiameter = windowWidth/20;
-	paddleWidth = ballDiameter * 3;
-	paddleHeight = paddleWidth/5;
+	paddleHeight = windowHeight/5;
+	paddleWidth = paddleHeight/10;
+	paddleX = 0;
+	ballDiameter = paddleHeight/2;
+	ballX = windowWidth/10;
+	ballY = windowHeight/10;
+	enemyX = windowWidth - paddleWidth/2;
+	enemyY = windowHeight/2;
+	stroke (255);
+	strokeWeight (10);
 }
 
 function draw() {
-	background (0);
-	fill (0, 0, 255);
-	ellipse (ballX, ballY, ballDiameter, ballDiameter);
+	background (0); //black background
+	line (windowWidth/2, 0, windowWidth/2, windowHeight);
 	rectMode (CENTER);
-	rect (mouseX, windowHeight - paddleHeight/2, paddleWidth, paddleHeight);
+	rect (paddleX, mouseY, paddleWidth, paddleHeight);
+	rect (enemyX, enemyY, paddleWidth, paddleHeight);
+	ellipse (ballX, ballY, ballDiameter, ballDiameter);
 	ballX = ballX + xspeed;
 	ballY = ballY + yspeed;
 
-	if (ballX > windowWidth - ballDiameter/2) {
-		xspeed = xspeed * -1;
-	}
+	enemyY = ballY;
 
-	if (ballX < ballDiameter/2) {
-		xspeed = xspeed * -1;
-	}
-
-	if (ballY < ballDiameter/2) {
+	if ((ballY < ballDiameter/2) || (ballY > windowHeight - ballDiameter/2)) {
 		yspeed = yspeed * -1;
 	}
 
-	if (ballX > mouseX - paddleWidth/2){
-		if (ballX < mouseX + paddleWidth/2){
-			if (ballY < windowHeight - paddleHeight){
-				if (ballY > windowHeight - ballDiameter/2 - paddleHeight) {
-					yspeed = yspeed * -1;
-					score = score + 1;
+	if (ballY < mouseY + paddleHeight/2) {
+		if (ballY > mouseY - paddleHeight/2) {
+			if (ballX < paddleWidth + ballDiameter/2) {
+				if (ballX > 0) {
+					xspeed = xspeed * -1;
 				}
 			}
 		}
 	}
 
-	fill (255);
-	textSize (24);
-	text ("Score " + score, 100, 100);
-	
+	if (ballY < enemyY + paddleHeight/2) {
+		if (ballY > enemyY - paddleHeight/2) {
+			if (ballX > windowWidth -ballDiameter/2) {
+				if (ballX < windowWidth){
+					xspeed = xspeed * -1;
+				}
+			}
+		}
+	}
+
 }
