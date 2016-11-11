@@ -20,14 +20,15 @@ function setup() {
 	enemyX = windowWidth - paddleWidth/2;
 	enemyY = windowHeight/2;
 	stroke (255);
-	strokeWeight (10);
 }
 
 function draw() {
 	background (0); //black background
 	fill (0, 0, 255);
+	strokeWeight (10);
 	line (windowWidth/2, 0, windowWidth/2, windowHeight);
 	rectMode (CENTER);
+	strokeWeight (1);
 	rect (paddleX, mouseY, paddleWidth, paddleHeight);
 	rect (enemyX, enemyY, paddleWidth, paddleHeight);
 	ellipse (ballX, ballY, ballDiameter, ballDiameter);
