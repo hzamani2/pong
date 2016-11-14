@@ -129,13 +129,13 @@ function Brick (_xpos, _ypos) {
     if (isHitLeft) {
       this.notBroken = false;
       //ball.ypos = this.ypos - ball.diameter/2;
-      ball.yspeed = ball.yspeed *-1;
+      ball.xspeed = ball.xspeed *-1;
     }
 
     if (isHitRight) {
       this.notBroken = false;
       //ball.ypos = this.ypos - ball.diameter/2;
-      ball.yspeed = ball.yspeed *-1;
+      ball.xspeed = ball.xspeed *-1;
     }
   }
 }
