@@ -114,10 +114,10 @@ function draw() {
 	if ((ballY > height) || (ball2Y > height)){
 
 
-		ballX = 100; //resets ball position on x
+		ballX = random (width); //resets ball position on x
 		ballY = 100; //resets ball position on y
 
-		ball2X = 600;
+		ball2X = random (width);
 		ball2Y = 100;
 
 
